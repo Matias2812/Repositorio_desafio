@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from django.template import Template, Context, loader
+from usuarios.models import Curso
 from usuarios.models import Familiares
 
 # Create your views here.
@@ -26,3 +27,18 @@ def alta_familiares(request):
     familiar.save()
  
     return HttpResponse('Funciona')
+
+
+def curso(request):
+    cursos = Curso.objects.all()
+    dicc = {'cursos': cursos}
+    plantilla = loader.get_template('curso.html')
+    renderizar = plantilla.render(dicc)
+    return HttpResponse(renderizar)
+
+
+def alta_curso(request, nombre):
+    curso = Curso(nombre=nombre, camada='637490')
+    curso.save()
+    texto = f'Se guardo en la BD el Curso:: {curso.nombre} Camada: {curso.camada}'
+    return HttpResponse(texto)

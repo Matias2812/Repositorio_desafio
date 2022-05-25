@@ -8,3 +8,11 @@ class Familiares(models.Model):
     edad=models.IntegerField()
    
     fecha=models.DateField()
+
+
+
+class Curso(models.Model):
+
+    nombre= models.CharField(max_length=40)
+    
+    camada= models.IntegerField() 
