@@ -1,13 +1,16 @@
 from django.urls import path
-from usuarios.views import inicio,lista_familiares,alta_familiares, curso, alta_curso
+from usuarios import views
 
 urlpatterns=[
     
-    path('inicio/', inicio),
-    path('familia/', lista_familiares),
-    path('familiares/',alta_familiares),
-    path('cursos', curso),
-    path('otro_curso/<nombre>', alta_curso)
+    path('', views.nueva_pagina),
+    path('inicio/', views.inicio),
+    path('familia/', views.lista_familiares),
+    path('familiares/', views.alta_familiares),
+    path('cursos', views.curso, name='curso'),
+    path('otro_curso/<nombre>', views.alta_curso),
+    path('alumnos/', views.alumnos, name='alumnos'),
+    path('contacto/', views.contactos),
 
 
 ]

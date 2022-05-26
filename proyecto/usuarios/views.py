@@ -7,7 +7,7 @@ from usuarios.models import Familiares
 # Create your views here.
 
 def inicio(request):
-    render(request, 'index.html')
+    return render(request, 'index.html')
 
 def lista_familiares(request):
     familiares= Familiares.objects.all()
@@ -32,7 +32,7 @@ def alta_familiares(request):
 def curso(request):
     cursos = Curso.objects.all()
     dicc = {'cursos': cursos}
-    plantilla = loader.get_template('curso.html')
+    plantilla = loader.get_template('materias.html')
     renderizar = plantilla.render(dicc)
     return HttpResponse(renderizar)
 
@@ -42,3 +42,15 @@ def alta_curso(request, nombre):
     curso.save()
     texto = f'Se guardo en la BD el Curso:: {curso.nombre} Camada: {curso.camada}'
     return HttpResponse(texto)
+
+
+def nueva_pagina(request):
+    return render(request, 'padre.html')
+
+
+def alumnos(request):
+    return render(request, 'alumnos.html')
+
+
+def contactos(request):
+    return render(request, 'contacto.html')
